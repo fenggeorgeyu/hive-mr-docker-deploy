@@ -28,3 +28,4 @@ hive-bash:
 
 hive:
 	docker-compose exec hive-server hive
+
