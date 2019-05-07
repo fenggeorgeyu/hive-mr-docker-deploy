@@ -85,7 +85,7 @@ services:
     deploy:
       placement:
         constraints:
-          - node.role == worker
+          - node.role == manager
   hive-metastore-postgresql:
     image: bde2020/hive-metastore-postgresql:2.3.0
     volumes:
