@@ -5,6 +5,7 @@
 name=hive-dk1
 image=bde2020/hive
 host_dir=$(shell pwd)
+stack_name=hc
 
 create: compose
 
@@ -30,7 +31,10 @@ hive:
 	docker-compose exec hive-server hive
 
 deploy:
-	docker stack deploy -c docker-compose.yml --with-registry-auth hc
+	docker stack deploy -c docker-compose.yml --with-registry-auth ${stack_name}
+
+deploy-rm:
+	docker stack rm ${stack_name}
 
 commit:
 	git add -u
