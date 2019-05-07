@@ -40,8 +40,8 @@ services:
     environment:
       HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:postgresql://hive-metastore/metastore"
       SERVICE_PRECONDITION: "hive-metastore:9083"
-    networks:
-      - my-net
+    # networks:
+    #   - my-net
     ports:
       - "10000:10000"
       - "10002:10002"
@@ -86,8 +86,8 @@ volumes:
   datanode:
   hive-metastore-postgresql:
 
-networks:
-  my-net:
+# networks:
+#   my-net:
 
 
 
