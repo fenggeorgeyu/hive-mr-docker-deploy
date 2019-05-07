@@ -85,7 +85,7 @@ services:
     deploy:
       placement:
         constraints:
-          - node.role == manager
+          - node.role == worker
   hive-metastore-postgresql:
     image: bde2020/hive-metastore-postgresql:2.3.0
     volumes:
@@ -93,7 +93,7 @@ services:
     deploy:
       placement:
         constraints:
-          - node.role == manager
+          - node.role == worker
 
   # presto-coordinator:
   #   image: shawnzhu/prestodb:0.181
