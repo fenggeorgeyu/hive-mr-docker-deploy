@@ -40,10 +40,10 @@ deploy-ps:
 	docker stack ps ${stack_name}
 
 deploy-hive-bash:
-	docker exec -it $(docker ps | grep hive-server | awk '{print $1}') bash
+	docker exec -it $$(docker ps | grep hive-server | awk '{print $1}') bash
 
 deploy-hive-sql:
-	docker exec -it $(docker ps | grep hive-server | awk '{print $1}') hive
+	docker exec -it $$(docker ps | grep hive-server | awk '{print $1}') hive
 
 commit:
 	git add -u

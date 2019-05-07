@@ -44,8 +44,6 @@ services:
       SERVICE_PRECONDITION: "hive-metastore:9083"
     ports:
       - "10000:10000"
-    expose:
-      - "10000"
     deploy:
       placement:
         constraints:
