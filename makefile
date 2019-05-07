@@ -29,6 +29,9 @@ hive-bash:
 hive:
 	docker-compose exec hive-server hive
 
+deploy:
+	docker stack deploy -c docker-compose.yml --with-registry-auth hc
+
 commit:
 	git add -u
 	git add .
