@@ -11,8 +11,6 @@ services:
       - ./hadoop-hive.env
     ports:
       - "50070:50070"
-    networks:
-     - ingress
     deploy:
       placement:
         constraints:
@@ -27,8 +25,6 @@ services:
       SERVICE_PRECONDITION: "namenode:50070"
     ports:
       - "50075:50075"
-    networks:
-     - ingress
     deploy:
       replicas: 3
       placement:
@@ -45,10 +41,7 @@ services:
       HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:postgresql://hive-metastore/metastore"
       SERVICE_PRECONDITION: "hive-metastore:9083"
     ports:
-      - "10000:10000"
-      - "10002:10002"
-    networks:
-     - ingress
+      - "127.0.0.1:10000:10000"
     deploy:
       placement:
         constraints:
@@ -62,8 +55,6 @@ services:
       SERVICE_PRECONDITION: "namenode:50070 datanode:50075 hive-metastore-postgresql:5432"
     ports:
       - "9083:9083"
-    networks:
-     - ingress
     deploy:
       placement:
         constraints:
@@ -72,8 +63,6 @@ services:
     image: bde2020/hive-metastore-postgresql:2.3.0
     volumes:
       - hive-metastore-postgresql:/var/lib/postgresql/data
-    networks:
-     - ingress
     deploy:
       placement:
         constraints:
@@ -94,8 +83,8 @@ volumes:
   datanode:
   hive-metastore-postgresql:
 
-networks:
-  ingress:
+# networks:
+#   ingress:
 
 
 
