@@ -20,7 +20,7 @@ services:
       - ./hadoop-hive.env
     environment:
       SERVICE_PRECONDITION: "namenode:50070"
-      - "constraint:node==dk-2.aws"
+      # - "constraint:node==dk-2.aws"
     ports:
       - "50075:50075"
   datanode2:
