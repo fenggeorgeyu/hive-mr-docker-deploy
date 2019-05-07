@@ -25,6 +25,10 @@ services:
       SERVICE_PRECONDITION: "namenode:50070"
     ports:
       - "50075:50075"
+    deploy:
+      placement:
+        constraints:
+          - node.role == worker
   datanode2:
     image: bde2020/hadoop-datanode:2.0.0-hadoop2.7.4-java8
     volumes:
@@ -35,6 +39,10 @@ services:
       SERVICE_PRECONDITION: "namenode:50070"
     ports:
       - "50076:50075"
+    deploy:
+      placement:
+        constraints:
+          - node.role == worker
   datanode3:
     image: bde2020/hadoop-datanode:2.0.0-hadoop2.7.4-java8
     volumes:
@@ -45,6 +53,10 @@ services:
       SERVICE_PRECONDITION: "namenode:50070"
     ports:
       - "50077:50075"
+    deploy:
+      placement:
+        constraints:
+          - node.role == worker
   hive-server:
     image: bde2020/hive:2.3.2-postgresql-metastore
     volumes:
@@ -57,6 +69,10 @@ services:
       SERVICE_PRECONDITION: "hive-metastore:9083"
     ports:
       - "10000:10000"
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
   hive-metastore:
     image: bde2020/hive:2.3.2-postgresql-metastore
     env_file:
@@ -66,10 +82,18 @@ services:
       SERVICE_PRECONDITION: "namenode:50070 datanode:50075 hive-metastore-postgresql:5432"
     ports:
       - "9083:9083"
+    deploy:
+      placement:
+        constraints:
+          - node.role == worker
   hive-metastore-postgresql:
     image: bde2020/hive-metastore-postgresql:2.3.0
     volumes:
       - hive-metastore-postgresql:/var/lib/postgresql/data
+    deploy:
+      placement:
+        constraints:
+          - node.role == worker
 
   # presto-coordinator:
   #   image: shawnzhu/prestodb:0.181
