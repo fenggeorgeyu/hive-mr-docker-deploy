@@ -18,7 +18,8 @@ start:
 stop:
 	docker-compose stop
 
-delete-all:
+#delete volumes also
+delete-all: 
 	docker-compose down -v
 
 delete:
