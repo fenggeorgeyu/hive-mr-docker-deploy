@@ -12,7 +12,7 @@ services:
     ports:
       - "50070:50070"
     networks:
-     - ingress:
+     - ingress
     deploy:
       placement:
         constraints:
@@ -28,7 +28,7 @@ services:
     ports:
       - "50075:50075"
     networks:
-     - ingress:
+     - ingress
     deploy:
       replicas: 3
       placement:
@@ -48,7 +48,7 @@ services:
       - "10000:10000"
       - "10002:10002"
     networks:
-     - ingress:
+     - ingress
     deploy:
       placement:
         constraints:
@@ -63,7 +63,7 @@ services:
     ports:
       - "9083:9083"
     networks:
-     - ingress:
+     - ingress
     deploy:
       placement:
         constraints:
@@ -73,7 +73,7 @@ services:
     volumes:
       - hive-metastore-postgresql:/var/lib/postgresql/data
     networks:
-     - ingress:
+     - ingress
     deploy:
       placement:
         constraints:
