@@ -36,6 +36,9 @@ deploy:
 deploy-rm:
 	docker stack rm ${stack_name}
 
+deploy-ps:
+	docker stack ps ${stack_name}
+
 commit:
 	git add -u
 	git add .
