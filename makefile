@@ -1,6 +1,5 @@
-# @version 20190302
-# docker files at 
-# https://github.com/big-data-europe/docker-hive
+# @version Tue May  7 19:32:20 2019
+# reference https://github.com/big-data-europe/docker-hive
 
 name=hive-dk1
 image=bde2020/hive
@@ -28,7 +27,7 @@ delete:
 hive-bash:
 	docker-compose exec -it hive-server bash
 
-hive:
+hive-sql:
 	docker-compose exec -it hive-server hive
 
 deploy:
@@ -39,6 +38,12 @@ deploy-rm:
 
 deploy-ps:
 	docker stack ps ${stack_name}
+
+deploy-hive-bash:
+	docker exec -it $(docker ps | grep hive-server | awk '{print $1}') bash
+
+deploy-hive-sql:
+	docker exec -it $(docker ps | grep hive-server | awk '{print $1}') hive
 
 commit:
 	git add -u
