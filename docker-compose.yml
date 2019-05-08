@@ -16,7 +16,8 @@ services:
     deploy:
       placement:
         constraints:
-          - node.role == manager
+          # - node.role == manager
+          - node.role == worker
   datanode:
     image: bde2020/hadoop-datanode:2.0.0-hadoop2.7.4-java8
     volumes:
@@ -47,7 +48,8 @@ services:
     deploy:
       placement:
         constraints:
-          - node.role == manager
+          # - node.role == manager
+          - node.role == worker
   hive-metastore:
     image: bde2020/hive:2.3.2-postgresql-metastore
     env_file:
