@@ -36,7 +36,7 @@ services:
   hive-server:
     image: bde2020/hive:2.3.2-postgresql-metastore
     volumes:
-      - ./shared:/shared
+      - ~/shared:/shared
       # - ~/git/TPC-H-Skew/:/TPC-H-Skew
     env_file:
       - ./hadoop-hive.env
