@@ -25,10 +25,10 @@ delete:
 	docker-compose down
 
 hive-bash:
-	docker-compose exec -it hive-server bash
+	docker-compose exec hive-server bash
 
 hive-sql:
-	docker-compose exec -it hive-server hive
+	docker-compose exec hive-server hive
 
 deploy:
 	docker stack deploy -c docker-compose.yml --with-registry-auth ${stack_name}

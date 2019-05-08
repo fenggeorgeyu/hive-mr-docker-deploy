@@ -1,20 +1,23 @@
 # hive-mr-docker-deploy
+
 deploy hive with map-reduce in docker
 
-Change in docker-compose.yml the replicas of datanodes to scale.
+Change in docker-compose.yml the replicas of datanodes to scale. Need to create multiple docker servers and init the swarm.
 
-To deploy/restart the hive service to multiple nodes:
+On the docker swarm manager:
 
-    make deploy
+* To deploy/restart the hive service to multiple nodes:
+        
+        make deploy
 
-To display the services in the docker stack:
+* To display the services in the docker stack:
 
-    make deploy-ps
+        make deploy-ps
 
-To delete the docker stack:
+* To delete the docker stack:
 
-    make deploy-rm
+        make deploy-rm
 
-To test the services on local:
+* To test the services on local:
 
-    make create
+        make create
