@@ -50,7 +50,7 @@ services:
         constraints:
           # - node.role == manager
           # - node.role == worker
-          - node.id==dk-2.aws
+          - node.hostname==dk-2.aws
   hive-metastore:
     image: bde2020/hive:2.3.2-postgresql-metastore
     env_file:
