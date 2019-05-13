@@ -17,7 +17,6 @@ services:
       placement:
         constraints:
           - node.role == manager
-          # - node.role == worker
   datanode:
     image: bde2020/hadoop-datanode:2.0.0-hadoop2.7.4-java8
     volumes:
@@ -45,13 +44,10 @@ services:
       SERVICE_PRECONDITION: "hive-metastore:9083"
     ports:
       - "10000:10000"
-      # - "2222:22"
     deploy:
       placement:
         constraints:
-          - node.role == manager  
-          # - node.role == worker
-          # - node.hostname==dk-2.aws
+          - node.role == manager
   hive-metastore:
     image: bde2020/hive:2.3.2-postgresql-metastore
     env_file:
