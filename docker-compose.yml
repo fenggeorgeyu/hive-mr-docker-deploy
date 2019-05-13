@@ -16,8 +16,8 @@ services:
     deploy:
       placement:
         constraints:
-          # - node.role == manager
-          - node.role == worker
+          - node.role == manager
+          # - node.role == worker
   datanode:
     image: bde2020/hadoop-datanode:2.0.0-hadoop2.7.4-java8
     volumes:
@@ -36,8 +36,8 @@ services:
   hive-server:
     image: bde2020/hive:2.3.2-postgresql-metastore
     volumes:
-      - ~/shared:/shared
-      # - ~/git/TPC-H-Skew/:/TPC-H-Skew
+      - ./shared:/shared
+      - ~/git/TPC-H-Skew/:/TPC-H-Skew
     env_file:
       - ./hadoop-hive.env
     environment:
@@ -45,12 +45,13 @@ services:
       SERVICE_PRECONDITION: "hive-metastore:9083"
     ports:
       - "10000:10000"
+      # - "2222:22"
     deploy:
       placement:
         constraints:
-          # - node.role == manager
+          - node.role == manager  
           # - node.role == worker
-          - node.hostname==dk-2.aws
+          # - node.hostname==dk-2.aws
   hive-metastore:
     image: bde2020/hive:2.3.2-postgresql-metastore
     env_file:
@@ -72,6 +73,14 @@ services:
       placement:
         constraints:
           - node.role == worker
+  ssh-server:
+    image: docker.io/panubo/sshd
+    volumes:
+      - ~/.ssh/authorized_keys:/root/.ssh/authorized_keys
+    ports:
+      - "2222:22"
+    environment:
+      SSH_ENABLE_ROOT: "true" 
 
   # presto-coordinator:
   #   image: shawnzhu/prestodb:0.181
